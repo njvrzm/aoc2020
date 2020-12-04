@@ -30,6 +30,8 @@ fn main() {
     } else if args[1] == "four" {
         if args[2] == "one" {
             day_four::run_one(lines);
+        } else {
+            day_four::run_two(lines);
         }
     }
 }
