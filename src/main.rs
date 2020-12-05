@@ -5,10 +5,12 @@ use std::env;
 mod one;
 mod two;
 mod four;
+mod five;
 
 use crate::one::day_one;
 use crate::two::day_two;
 use crate::four::day_four;
+use crate::five::day_five;
 #[macro_use] extern crate maplit;
 
 fn main() {
@@ -32,6 +34,12 @@ fn main() {
             day_four::run_one(lines);
         } else {
             day_four::run_two(lines);
+        }
+    } else if args[1] == "five" {
+        if args[2] == "one" {
+            day_five::run_one(lines);
+        } else {
+            day_five::run_two(lines);
         }
     }
 }
