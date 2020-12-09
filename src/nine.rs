@@ -23,23 +23,28 @@ pub mod day_nine {
         }
 
     }
-    pub fn run_two(input: String) {
-        let numbers: Vec<i64> = input.lines().map(|l| l.parse().expect("Bad number")).collect_vec();
-        let mut running_sum: i64 = 0;
+    fn ratchet(target: i64, numbers: &Vec<i64>) -> (usize, usize) {
+        let mut running_sum: i64 = numbers[0];
         let mut top: usize = 0;
         let mut bottom: usize = 0;
-        while running_sum != 1212510616 {
-            if bottom > 0 {
-                running_sum -= numbers[bottom]
-            }
-            bottom += 1;
-            while running_sum < 1212510616 {
+        loop {
+            if running_sum > target {
+                running_sum -= numbers[bottom];
+                bottom += 1;
+            } else if running_sum < target {
                 top += 1;
                 running_sum += numbers[top];
+            } else {
+                return (bottom, top);
             }
+            println!("Span: {}", top - bottom);
         }
+    }
+    pub fn run_two(input: String) {
+        let numbers: Vec<i64> = input.lines().map(|l| l.parse().expect("Bad number")).collect_vec();
+        let (bottom, top) = ratchet(1212510616, &numbers);
         let small = numbers[bottom..top].iter().min().unwrap();
         let large = numbers[bottom..top].iter().max().unwrap();
-        println!("Found it: {}", small + large)
+        println!("Found it: {}", small + large);
     }
 }
