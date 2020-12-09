@@ -9,6 +9,7 @@ mod five;
 mod six;
 mod seven;
 mod eight;
+mod nine;
 
 use crate::one::day_one;
 use crate::two::day_two;
@@ -17,6 +18,7 @@ use crate::five::day_five;
 use crate::six::day_six;
 use crate::seven::day_seven;
 use crate::eight::day_eight;
+use crate::nine::day_nine;
 use itertools::Itertools;
 
 #[macro_use] extern crate maplit;
@@ -40,6 +42,8 @@ fn main() {
         ["seven", "two"] => day_seven::run_two(lines),
         ["eight", "one"] => day_eight::run_one(lines),
         ["eight", "two"] => day_eight::run_two(lines),
+        ["nine", "one"] => day_nine::run_one(lines),
+        ["nine", "two"] => day_nine::run_two(lines),
         _ => (), // error or something
     }
 }
