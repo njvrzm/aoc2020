@@ -1,10 +1,9 @@
 pub mod day_twelve {
     use std::ops::{Mul, AddAssign};
-    use std::str::{FromStr, Lines};
+    use std::str::FromStr;
     use std::string::ParseError;
     use std::fmt;
     use crate::twelve::day_twelve::Direction::{West, East, South, North};
-    use itertools::__std_iter::Map;
     use itertools::Itertools;
 
     #[derive(Debug)]
@@ -80,9 +79,6 @@ pub mod day_twelve {
         }
     }
     impl Locus {
-        fn times(self, d: i32) -> Self {
-            return Self::new(self.dx*d, self.dy*d)
-        }
         fn new(dx: i32, dy: i32) -> Self {
             return Self{dx, dy}
 
