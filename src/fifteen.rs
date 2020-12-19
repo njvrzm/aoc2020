@@ -29,7 +29,6 @@ pub mod day_fifteen {
                 None => { self.history.insert(n, Record { last: Some(self.tick), previous: None }); },
                 Some(r) => r.say(self.tick),
             }
-            let rec = self.history.get(&n);
             self.last = n;
         }
         fn speak(&mut self) {

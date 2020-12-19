@@ -37,7 +37,7 @@ pub mod day_thirteen {
     }
 
     pub fn run_two(input: String) {
-        let (time, buses) = parse_no_filter(input);
+        let (_, buses) = parse_no_filter(input);
         let mut requirements: Vec<Aspect> = Vec::new();
         for (i, bus) in buses.iter().enumerate() {
             let modulus = *bus;
