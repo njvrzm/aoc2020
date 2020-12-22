@@ -2,11 +2,8 @@ pub mod day_seventeen {
     use std::collections::{HashMap, HashSet};
     use std::str::FromStr;
     use std::string::ParseError;
-    use itertools::Itertools;
 
     type Point = (i32, i32, i32, i32);
-    type Alive = HashSet<Point>;
-    type NeighborCount = HashMap<Point, i32>;
 
     #[derive(Debug)]
     struct World {
@@ -17,8 +14,8 @@ pub mod day_seventeen {
         type Err = ParseError;
 
         fn from_str(s: &str) -> Result<Self, Self::Err> {
-            let mut alive = HashSet::new();
-            let mut neighbors : HashMap<Point, i32> = HashMap::new();
+            let alive = HashSet::new();
+            let neighbors : HashMap<Point, i32> = HashMap::new();
             let mut world = World{alive, neighbors};
             for (i, line) in s.lines().enumerate() {
                 for (j, char) in line.chars().enumerate() {
@@ -42,12 +39,6 @@ pub mod day_seventeen {
             for point in neighbors(p) {
                 *self.neighbors.get_mut(&point).expect("Missing count for off operation") -= 1
             }
-        }
-        fn at(&self, p: &Point) -> bool {
-            self.alive.contains(p)
-        }
-        fn neighbor_count(&self, p: &Point) -> i32 {
-            self.neighbors.get(p).unwrap_or(&0).clone()
         }
         fn step(&mut self) {
             let mut on = Vec::new();
@@ -81,7 +72,7 @@ pub mod day_seventeen {
 
     pub fn run_one(input: String) {
         let mut world = World::from_str(&input).unwrap();
-        for i in 0..6 {
+        for _ in 0..6 {
             world.step();
         }
         println!("Total on: {}", world.alive.len());

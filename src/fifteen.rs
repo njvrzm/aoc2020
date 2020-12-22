@@ -1,3 +1,4 @@
+#[allow(mutable_borrow_reservation_conflict)]
 pub mod day_fifteen {
     use std::collections::HashMap;
 
